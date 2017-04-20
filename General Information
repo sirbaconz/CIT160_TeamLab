@@ -13,4 +13,11 @@ General Information:
   
   
   
+  NOTE: To work in your team directory, run the following command:
+        $ cd /home/team#    Replace # with  your team number
+        Create the public_html and cgi-bin directories
+
+  
+  
+  
  
