@@ -1,6 +1,7 @@
 HTML Code:
 
-Version 01 - 11:25am 4/27/2017 
+Version 02 - 1:55pm 4/27/2017 
+
 
 
 <!DOCTYPE html>
@@ -23,7 +24,7 @@ Version 01 - 11:25am 4/27/2017
 
 <center>
 
-<h1> What is his end game? </h1>
+<h1> What is his end game? (place holder logo) </h1>
 
 
 <img src="http://i.imgur.com/JRdYdqo.png" alt="It's happening" style="width:500; height:750;">
@@ -31,16 +32,16 @@ Version 01 - 11:25am 4/27/2017
 
 <div class="form">
 <form>
-<h2>Log in</h2>
+<h2>Please Login</h2>
 <div class= "container">
-<label><b>Username</b></label>
+<label><b>Username:</b></label>
 <input type="text" placeholder="Enter Username" name="username" required>
 <br>
-<label><b>Password</b></label>
+<label><b>Password:</b></label>
 <input type="password" placeholder="Enter Password" name="password" required>
 <br>
 <input type="button" value="Log In" onclick="login()">
-<input type="button" value="New User" onclick="register()">
+<input type="button" value="New User?" onclick="register()">
 
 
 <br>
