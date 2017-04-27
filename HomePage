@@ -37,8 +37,6 @@ Version 01 - 11:25am 4/27/2017
 Student
 <input type="radio" name="option" value="Instructor">
 Instructor
-<input type="radio" name="option" value="new user">
-new user
 
 <h3> What is his end game? </h3>
 
