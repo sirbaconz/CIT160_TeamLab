@@ -6,17 +6,17 @@ index.cgi
 
 correct path use of public_html and cgi-bin
 
+Please refer to header.html and footer.html to change global visuals for each page (both are loaded on each page)
+
 
 
 ========END===============================
-
 
 
 #! /bin/bash
 
 echo "Content-type: text/html"
 echo ""
-
 
 
 cat header.html
@@ -47,15 +47,14 @@ cat << EOF
 
 <center>
 
-<h1> What is his end game? (place holder logo) </h1>
+<h1> Login to Class Solutions (edit style pls)  </h1>
 
 
-<img src="http://i.imgur.com/JRdYdqo.png" alt="It's happening" style="width:500; height:750;">
+
 
 
 <div class="form">
 <form>
-<h2>Please Login</h2>
 <div class= "container">
 <label><b>Username:</b></label>
 <input type="text" placeholder="Enter Username" name="username" required>
