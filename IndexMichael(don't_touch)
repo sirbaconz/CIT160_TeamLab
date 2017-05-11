@@ -1,0 +1,163 @@
+===== Please don't load/edit code until I clear it ==============
+===== Using this place as a backup===============================
+
+
+
+#! /bin/bash
+
+echo "Content-type: text/html"
+echo ""
+
+cat header.html
+
+if [[ -n ${QUERY_STRING} ]]; then
+function urldecode {
+        local url_encoded="${1//+/}"
+        printf '%b' "${url_encoded//%/\\x}"
+        }
+
+found=""
+title=""
+firstName=""
+
+OIFS=$IFS
+IFS='=&'
+parm_get=($QUERY_STRING)
+IFS=$OIFS
+        for (( i=0; i<${#parm_get[@]}; i+=2)); do
+                declare var_${parm_get[i]}=$(urldecode ${parm_get[i+1]})
+        done
+
+full=$var_uname:$var_pswd
+data=1
+
+if grep -Fxq $full accounts.txt
+then
+        data=$(cat accountsinfo.txt | grep $var_uname)
+        data=2
+        echo "<meta http-equiv='refresh' content='0; url=http://cit160lab.sandbox.csun.edu/~team11/cgi-bin/gradesjason.cgi' />"
+else
+   echo "<script>window.alert(\"Incorrect username or password.\")</script>"
+fi
+fi
+cat << EOF
+<!DOCTYPE html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+EOF
+
+cat << EOF
+        <style type="text/css">
+                body {
+                        background-color:  #FAEBD7;
+                }
+                .detail {
+                        color:#000000; font-family:"Roboto",sans serif; font-size:16px; position:relative; top:40px; left: 10px;
+                }
+                .name {
+                        color:#FF0000; font-family:"Roboto",sans serif; font-size 16px; position:relative; top:40px; left: 10px;
+                }
+                .header img {
+                        float: left;
+                        width: 90px;
+                        height: 90px;
+                }
+
+                input[type="text"], input[type="password"]{
+                        width: 100%
+                        padding: 12px 20px;
+                        margin: 8px 0;
+                        display: inline-block;
+                        border: 1px solid #ccc;
+                        box-sizing: border-box;
+                        font-family: "Roboto",sans serif;
+                        font-size:16px;
+                }
+
+                .container {
+                        padding: 20px;
+                }
+
+                #login {
+                        padding-right: 4em;
+                }
+
+                form {
+                        border: 3px solid #f1f1f1;
+                }
+
+                h1, h2 {
+                        font-family: "Roboto",sans serif;
+                        font-size: 25px;
+                        color: purple;
+                        padding: 12px 20px;
+                }
+
+                label {
+                        font-family: "Roboto",sans serif;
+                        font-size: 20px;
+                        color: purple;
+                }
+
+                input[type='button'] {
+                        font-family: "Roboto",sans serif;
+                        font-size: 16px;
+                        color: white;
+                        background-color: purple;
+                }
+
+
+                input[type='submit'] {
+                        font-family: "Roboto",sans serif;
+                        font-size: 16px;
+                        color: white;
+                        background-color: purple;
+                }
+
+                #JadeFont-changedmichael {
+
+font: 400 20px Lato, san-serif;
+line-height: 1.8;
+color: #818181;
+
+                }
+        </style>
+
+        <script type="text/javascript">
+                function register() {
+                        window.location.href="registration.cgi"
+                }
+
+                function display() {
+                        document.getElementById("hidden").style.visibility = "visible";
+                }
+        </script>
+</head>
+
+<body>
+
+
+
+<br><br><br><br>
+
+<form>
+<h2>Log In Form</h2>
+<div class="container">
+<label><b>Username:</b></label><br>
+<input type="text" placeholder="Enter Username" name="uname">
+<br>
+<label><b>Password:</b></label><br>
+<input type="text" placeholder="Enter Password" name="pswd">
+<br>
+<input type="submit" value="Log In" id="login">
+<input type="button" onclick="register()" value="New User" id="login">
+</div>
+</form>
+
+</body>
+</html>
+EOF
+
+cat footer.html
+exit 0
