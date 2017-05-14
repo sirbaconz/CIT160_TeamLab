@@ -1,8 +1,5 @@
-<=====Register   version 5/11===> 
-
-
-<======= 5:45 PM ======================= > 
-
+<=====Register   version 5/13===> 
+<====reads list and confirm if user exist, doesn't write to file for accounts.txt and accountsinfo.txt=====>
 
 
 #! /bin/bash
@@ -33,25 +30,19 @@ IFS=$OIFS
         info=$var_usrname:$var_password
 
         data=1
-        credentials=~/public_html/cgi-bin/accountsinfo.txt
+        accountsinfo=~/public_html/cgi-bin/accountsinfo.txt
 
-        data=$(cat credentials.txt | grep $var_usrname)
+        data=$(cat accountsinfo.txt | grep $var_usrname)
 
         if [[ $data == *"$var_usrname"* ]]; then
                 echo "<script>window.alert(\"Username is Registered Already\")</script>"
         else
                 echo "$full" >> accountsinfo.txt
                 echo "$info" >> accounts.txt
-                echo "<script>window.alert(\"Thank you for registering! Please login to continue.\")</script>"
+                echo "<script>window.alert(\"You're are now registered to Class Solutions, please remember your credentials\")</script>"
                 echo "<meta http-equiv='refresh' content='0; url=http://cit160lab.sandbox.csun.edu/~team11/cgi-bin/' />"
         fi
 fi
-
-
-
-
-
-
 
 
 
@@ -72,7 +63,7 @@ cat << EOF
                                 width: 60px;
                                 height: 60px;
                         }
-                #find out how to import
+
 
                         input[type="text"], input[type="password"]{
                         width: 100%
@@ -131,7 +122,7 @@ cat << EOF
         </style>
 
 
-
+<!--
 <script type="text/javascript">
                 function register() {
                 var form = document.getElementsByTagName("form")[0];
@@ -151,8 +142,7 @@ cat << EOF
                 "<input type='button' onclick='register()' value='Register Me' />";
                 }
 </script>
-
-
+-->
 
 
 
@@ -171,7 +161,7 @@ cat << EOF
 <br><br>
 
 <h2>
-<span style="color:blue;font-weight:bold">Username:  </span><input type='text' name='username' id='username' size='20' />
+<span style="color:blue;font-weight:bold">Username:  </span><input type='text' name='usrname' id='usrname' size='20' />
 <img src="http://i.imgur.com/VU2Vozb.png" style="width 220px; height 250px; position: absolute; TOP:14em; LEFT:35em;"   >
 
 
@@ -188,7 +178,7 @@ cat << EOF
 <h2>
 <span style="color:blue;font-weight:bold"> Please choose an account type:
 
-<input type="radio" name="option" value="Student">
+<input type="radio" name="type" value="Student">
 Student
 <input type="radio" name="option" value="Instructor">
 Instructor
@@ -211,7 +201,3 @@ EOF
 
 
 cat footer.html
-
-
-
-<======================================================================================================>
